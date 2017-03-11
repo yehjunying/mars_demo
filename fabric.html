@@ -1,0 +1,1551 @@
+<!--
+* GenesisUI Bootstrap 4 Admin Template built as framework!
+* Version 1.3.3
+* https://GenesisUI.com
+* Copyright 2016 creativeLabs Łukasz Holeczek
+* License : https://GenesisUI.com/license.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="LeafUI Admin - UI Admin Kit Powered by Bootstrap 4">
+        <meta name="author" content="Lukasz Holeczek">
+        <meta name="keyword" content="LeafUI Admin - UI Admin Kit Powered by Bootstrap 4">
+        <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+        <title>LeafUI Admin - UI Admin Kit</title>
+        <!-- Main styles for this application -->
+        <link href="assets/css/style.css" rel="stylesheet">
+
+        <style>
+            @font-face {
+                font-family: "Open Sans";
+                font-style: normal;
+                font-weight: 400;
+                src: local("Open Sans"), local("OpenSans"), url("https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2") format("woff2");
+                unicode-range: U+0-FF, U+131, U+152-153, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+            }
+        </style>
+
+        <style>
+            #information-pane {
+                font-size: 14px;
+                font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-weight: 400;
+            }
+
+            .hide {
+                display: none !important;
+            }
+
+            .b-table {
+                font-size: .8em;
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .b-table thead tr {
+                background-color: #f1f5f7;
+            }
+
+            .b-table__sorting:hover {
+                background-color: #ccc;
+            }
+            .b-table thead tr th {
+                overflow: hidden;
+                vertical-align: middle;
+            }
+
+            .b-table tbody tr td {
+                overflow: hidden;
+                padding: 10px;
+                vertical-align: middle;
+                border-bottom: 1px solid #eee;
+            }
+
+            .b-table__sorting {
+                background-color: #afb1b3;
+                cursor: pointer;
+                border-bottom: 1px solid #fff;
+                font-size: 1.2em;
+                line-height: .5em;
+                color: #fff;
+            }
+
+            .b-table__heading {
+                font-weight: 700;
+                text-align: left;
+                font-size: 1.2em;
+                line-height: 2em;
+                padding: 0 10px;
+                border-right: 2px solid #fff;
+            }
+
+            .b-table__subheading {
+                font-size: .9em;
+                border-bottom: 1px solid #fff;
+                text-align: left;
+                padding: 10px;
+            }
+
+            .b-table__th_border {
+                border-right: 2px solid #fff;
+            }
+
+            .b-table.b-table_upstream .b-table__heading, .b-table.b-table_upstream .b-table__subheading {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+
+            .text-center {
+                text-align: center !important;
+            }
+
+            .text-right {
+                text-align: right !important;
+            }
+
+            .status_unavail, .status_unhealthy {
+                background-color: #f26c4f;
+            }
+
+            .status_up {
+                background-color: #8dc63f;
+            }
+
+            .table__td_status {
+                border-top: 1px solid #fff;
+                padding: 0 !important;
+                width: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                height: 54px !important;
+            }
+
+            .b-table__bold {
+                font-weight: 700;
+                font-size: 1.1em;
+            }
+
+            .nowrap {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .table__td_state_flash {
+                background-color: #f43636;
+                color: #fff;
+                -webkit-transition: none;
+                transition: none;
+            }
+
+            .table__td_canflash {
+                -webkit-transition: all 6s cubic-bezier(1,.005,.665,-.045);
+                transition: all 6s cubic-bezier(1,.005,.665,-.045);
+            }
+
+            .noselect {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: moz-none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            .table__td_upstream_name {
+                display: inline-block;
+                max-width: 150px;
+                line-height: 1.8em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .table__td_maximize {
+                background-color: #e2e5e8;
+                cursor: pointer;
+                padding: 0 !important;
+                color: #989a9c;
+            }
+
+            @media screen and (max-width:1470px) {
+                .table__td_upstream_name {
+                    max-width: 130px;
+                }
+            }
+
+        </style>
+
+        <style>
+            #information-pane .tooltip {
+                position: initial;
+                cursor: default;
+                border-bottom: 1px dotted #999;
+                opacity: 100;
+            }
+
+            #information-pane .nav .nav-item .tooltip {
+                border-bottom: 1px dashed #999;
+            }
+
+            #information-pane .nav-item {
+                display: inline-block;
+            }
+
+            #information-pane .nav .nav-item .nav-link {
+                font-weight: 400;
+                font-size: 0.9em;
+            }
+
+            #information-pane .nav .nav-item .active {
+                font-weight: 700;
+                font-size: 1.1em;
+            }
+
+            #information-pane .nav .nav-item a {
+                color: initial;
+            }
+        </style>
+
+        <style>
+            #fabric-pane .card-block {
+                padding: 0;
+            }
+
+            #fabric-pane .nav-item {
+                display: inline-block;
+            }
+
+            #fabric-pane .tooltip {
+                position: initial;
+                cursor: pointer;
+                border-bottom: 1px dashed #999;
+                opacity: 100;
+                /*display: inline-block;*/
+            }
+
+            #fabric-pane .topology-toolbar {
+                /*background-color: #2b4c66;*/
+                background-color: #f8f9fa;
+                margin-top: 0rem;
+                margin-bottom: 0.5rem;
+                padding: 0.5rem 0.25rem;
+                border-bottom: 1px solid #d1d4d7;
+            }
+
+            #fabric-pane .nav .nav-item .nav-link {
+                font-weight: 400;
+                font-size: 0.9em;
+            }
+
+            #fabric-pane .nav .nav-item .active {
+                font-weight: 700;
+                font-size: 1.1em;
+            }
+
+            #fabric-pane .nav .nav-item a {
+                color: initial;
+            }
+
+        </style>
+
+        <style type="text/css">
+            /*svg {*/
+                /*border: 1px solid #ccc;*/
+            /*}*/
+            svg {
+                font: 10px sans-serif;
+            }
+            circle.node {
+                fill: lightsteelblue;
+                stroke: #555;
+                stroke-width: 3px;
+            }
+            circle.leaf {
+                stroke: #fff;
+                stroke-width: 1.5px;
+            }
+            path.hull {
+                fill: lightsteelblue;
+                fill-opacity: 0.3;
+            }
+            line.link {
+                stroke: #333;
+                stroke-opacity: 0.5;
+                pointer-events: none;
+            }
+        </style>
+
+        <style>
+            .axis path,
+            .axis line {
+                fill: none;
+                stroke: black;
+                shape-rendering: crispEdges;
+            }
+
+            .axis text {
+                font-family: sans-serif;
+                font-size: 11px;
+            }
+        </style>
+
+    </head>
+    <!-- BODY options, add following classes to body to change options
+		1. 'sidebar-nav'		  - Navigation on the left
+			1.1. 'sidebar-off-canvas'	- Off-Canvas
+				1.1.1 'sidebar-off-canvas-push'	- Off-Canvas which move content
+				1.1.2 'sidebar-off-canvas-with-shadow'	- Add shadow to body elements
+		2. 'fixed-nav'			  - Fixed navigation
+		3. 'navbar-fixed'		  - Fixed navbar
+	-->
+    <body class="navbar-fixed sidebar-nav fixed-nav">
+        <header class="navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+                <a class="navbar-brand" href="#"></a>
+                <ul class="nav navbar-nav hidden-md-down">
+                    <li class="nav-item">
+                        <a class="nav-link navbar-toggler layout-toggler" href="#">☰</a>
+                    </li>
+                    <li class="nav-item p-x-1">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item p-x-1">
+                        <a class="nav-link" href="#">Users</a>
+                    </li>
+                    <li class="nav-item p-x-1">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right hidden-md-down">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img src="assets/img/flags/United-Kingdom.png" class="img-flag" alt="English">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-header text-xs-center">
+                                <strong>Choose language</strong>
+                            </div>
+                            <a class="dropdown-item" href="#">
+                                <img src="assets/img/flags/Poland.png" class="img-flag" alt="Polish"> Polish</a>
+                            <a class="dropdown-item" href="#">
+                                <img src="assets/img/flags/United-Kingdom.png" class="img-flag" alt="English"> English</a>
+                            <a class="dropdown-item" href="#">
+                                <img src="assets/img/flags/Spain.png" class="img-flag" alt="Espa&#xF1;ol"> Español</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-bell"></i><span class="label label-pill label-danger">5</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img src="assets/img/avatars/MARS-128.png" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            <span class="hidden-md-down">admin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-header text-xs-center">
+                                <strong>Account</strong>
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Updates<span class="label label-info">42</span></a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Messages<span class="label label-success">42</span></a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-tasks"></i> Tasks<span class="label label-danger">42</span></a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-comments"></i> Comments<span class="label label-warning">42</span></a>
+                            <div class="dropdown-header text-xs-center">
+                                <strong>Settings</strong>
+                            </div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Settings</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Payments<span class="label label-default">42</span></a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Projects<span class="label label-primary">42</span></a>
+                            <div class="divider"></div>
+                            <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <li class="nav-title">
+                        Dashboard
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> DASHBOARD <span class="label label-info">NEW</span></a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-diamond"></i> Fabric</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" href="fabric.html"><i class="icon-share"></i> Topology</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="fabric.html"><i class="icon-grid"></i> Heat Map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="fabric.html"><i class="icon-settings"></i> Configuration</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <!-- Main content -->
+        <main class="main">
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb r-0">
+                <li><a href="#">MARS</a></li>
+                <li><a href="#">Fabric</a></li>
+                <li class="active">Topology</li>
+            </ol>
+            <div class="container-fluid">
+                <div class="animated fadeIn">
+
+                    <div class="row row-equal">
+                        <div class="col-md-12">
+
+                            <div id="information-pane" class="card">
+                                <div class="card-header">
+
+                                    <ul class="nav" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active tooltip" data-toggle="tab" href="#controller-view" role="tab" style="margin-right: 10px">
+                                                Controller
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link tooltip" data-toggle="tab" href="#spine-view" role="tab" style="margin-right: 10px">
+                                                Spine
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link tooltip" data-toggle="tab" href="#leaf-view" role="tab" style="margin-right: 10px">
+                                                Leaf
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link tooltip" data-toggle="tab" href="#interface-view" role="tab" style="margin-right: 10px">
+                                                Interface
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link tooltip" data-toggle="tab" href="#server-view" role="tab" style="margin-right: 10px">
+                                                Server
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="card-actions">
+                                        <div class="clearfix m-t-1 fa-pull-left" style="margin-right: 20px">
+                                            <strong class="m-r-1">Failed only</strong>
+                                            <label class="switch switch-sm switch-text switch-pill switch-danger pull-right">
+                                                <input class="switch-input" type="checkbox">
+                                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                <span class="switch-handle"></span>
+                                            </label>
+                                        </div>
+
+                                        <a class="btn-minimize" aria-expanded="true" aria-controls="collapseExample" href="#information-view" data-toggle="collapse"><i class="icon-arrow-down"></i></a>
+                                        <a class="btn-minimize" aria-expanded="true" aria-controls="collapseExample" href="#information-view" data-toggle="collapse"><i class="icon-size-fullscreen"></i></a>
+                                        <a class="btn-close" href="#"><i class="icon-close"></i></a>
+                                    </div>
+                                </div> <!-- card-header -->
+
+                                <div id="information-view" class="card-block collapse in tab-content" aria-expanded="true">
+
+                                    <!-- Tab panes -->
+
+                                    <div class="tab-pane active" id="controller-view" role="tabpanel" aria-expanded="true">
+
+                                        <table class="b-table b-table_upstream   ">
+                                            <col width="10">
+                                            <col width="210">
+                                            <col width="1%">
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col width="20">
+                                            <col>
+                                            <col>
+                                            <col width="1%">
+                                            <col width="1%">
+                                            <col width="1%">
+                                            <col width="1%">
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <col>
+                                            <thead>
+                                            <tr>
+                                                <th class="b-table__sorting noselect" id="t-http_upstream_sort_1"
+                                                    rowspan="2" data-id="32">▾
+                                                </th>
+                                                <th class="b-table__heading" colspan="3">Server</th>
+                                                <th class="b-table__heading" colspan="2">Requests</th>
+                                                <th class="b-table__heading" colspan="3">Responses</th>
+                                                <th class="b-table__heading" colspan="2">Conns</th>
+                                                <th class="b-table__heading" colspan="4">Traffic</th>
+                                                <th class="b-table__heading" colspan="2">Server&nbsp;checks</th>
+                                                <th class="b-table__heading" colspan="4">Health&nbsp;monitors</th>
+                                            </tr>
+                                            <tr>
+                                                <th class="b-table__subheading">Name</th>
+                                                <th class="b-table__subheading"><span class="tooltip"
+                                                                                      data-ot="Total downtime"
+                                                                                      data-ot-style="nginxTooltip"
+                                                                                      data-id="6">DT</span></th>
+                                                <th class="b-table__subheading b-table__th_border text-center"><span
+                                                        class="tooltip" data-ot="Weight"
+                                                        data-ot-style="nginxTooltip" data-id="7">W</span></th>
+                                                <th class="b-table__subheading text-right">Total</th>
+                                                <th class="b-table__subheading b-table__th_border text-right">
+                                                    Req/s
+                                                </th>
+                                                <th class="text-center">...</th>
+                                                <th class="text-right b-table__subheading">4xx</th>
+                                                <th class="text-right b-table__subheading b-table__th_border">5xx
+                                                </th>
+                                                <th class="b-table__subheading text-center"><span class="tooltip"
+                                                                                                  data-ot="Active"
+                                                                                                  data-ot-style="nginxTooltip"
+                                                                                                  data-id="8">A</span>
+                                                </th>
+                                                <th class="b-table__subheading text-center b-table__th_border"><span
+                                                        class="tooltip" data-ot="Limit" data-ot-style="nginxTooltip"
+                                                        data-id="9">L</span></th>
+                                                <th class="b-table__subheading text-right traffic-column">Sent/s
+                                                </th>
+                                                <th class="b-table__subheading text-right traffic-column">Rcvd/s
+                                                </th>
+                                                <th class="b-table__subheading text-right">Sent</th>
+                                                <th class="b-table__subheading text-right b-table__th_border">Rcvd
+                                                </th>
+                                                <th class="b-table__subheading text-right">Fails</th>
+                                                <th class="b-table__subheading text-right b-table__th_border">
+                                                    Unavail
+                                                </th>
+                                                <th class="b-table__subheading text-right">Checks</th>
+                                                <th class="b-table__subheading text-right">Fails</th>
+                                                <th class="b-table__subheading text-right">Unhealthy</th>
+                                                <th class="b-table__subheading b-table__th_border">Last</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td class="table__td_status status_unhealthy"
+                                                    id="t-http_upstream_1_1_status" data-id="48"></td>
+                                                <td class="nowrap">
+                                                    <div class="table__td_upstream_name" id="t-http_upstream_1_1"
+                                                         data-id="47">
+                                                        <span class="nowrap b-table__bold tooltip">b&nbsp;10.0.0.1:8081
+                                                        </span>
+                                                    </div>
+                                                    <span class="upstream-server-edit-button"></span></td>
+                                                <td>2h&nbsp;37m</td>
+                                                <td class="text-center b-table__th_border">1</td>
+                                                <td class="text-right"><span class="tooltip"
+                                                                             id="t-http_upstream_conns_1_1"
+                                                                             data-id="50">0</span></td>
+                                                <td class="text-right b-table__th_border">0</td>
+                                                <td class="table__td_maximize text-center noselect" rowspan="2">
+                                                    <div>▶</div>
+                                                </td>
+                                                <td class="text-right table__td_canflash ">0</td>
+                                                <td class="text-right table__td_canflash b-table__th_border ">0</td>
+                                                <td class="text-center">0</td>
+                                                <td class="text-center b-table__th_border">∞</td>
+                                                <td class="text-right traffic-column">
+                                                    <div class="table__td_speed text-right">0</div>
+                                                </td>
+                                                <td class="text-right traffic-column">
+                                                    <div class="table__td_speed text-right">0</div>
+                                                </td>
+                                                <td class="text-right">0</td>
+                                                <td class="text-right b-table__th_border">0</td>
+                                                <td class="text-right">0</td>
+                                                <td class="text-right b-table__th_border">0</td>
+                                                <td class="text-right">946</td>
+                                                <td class="text-right">946</td>
+                                                <td class="text-right">1</td>
+                                                <td class="table__td_canflash b-table__th_border table__td_state_flash"
+                                                    id="t-http_upstream_1_1_health_status" data-id="49">failed
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="table__td_status status_up"
+                                                    id="t-http_upstream_1_0_status" data-id="45"></td>
+                                                <td class="nowrap">
+                                                    <div class="table__td_upstream_name" id="t-http_upstream_1_0"
+                                                         data-id="44"><span class="nowrap b-table__bold tooltip">10.0.0.1:8088</span>
+                                                    </div>
+                                                    <span class="upstream-server-edit-button"></span></td>
+                                                <td>0ms</td>
+                                                <td class="text-center b-table__th_border">5</td>
+                                                <td class="text-right"><span class="tooltip"
+                                                                             id="t-http_upstream_conns_1_0"
+                                                                             data-id="46">53951</span></td>
+                                                <td class="text-right b-table__th_border">14</td>
+                                                <td class="hide"></td>
+                                                <td class="text-right table__td_canflash ">59</td>
+                                                <td class="text-right table__td_canflash b-table__th_border ">0</td>
+                                                <td class="text-center">0</td>
+                                                <td class="text-center b-table__th_border">∞</td>
+                                                <td class="text-right traffic-column">
+                                                    <div class="table__td_speed text-right">4.16&nbsp;KiB</div>
+                                                </td>
+                                                <td class="text-right traffic-column">
+                                                    <div class="table__td_speed text-right">52.4&nbsp;KiB</div>
+                                                </td>
+                                                <td class="text-right">14.3&nbsp;MiB</td>
+                                                <td class="text-right b-table__th_border">871&nbsp;MiB</td>
+                                                <td class="text-right">0</td>
+                                                <td class="text-right b-table__th_border">0</td>
+                                                <td class="text-right">944</td>
+                                                <td class="text-right">0</td>
+                                                <td class="text-right">0</td>
+                                                <td class="table__td_canflash b-table__th_border "
+                                                    id="t-http_upstream_1_0_health_status">passed
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+                                    <div class="tab-pane p-a-1" id="spine-view" role="tabpanel" aria-expanded="false">
+                                        <div class="message">
+                                            <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                                                <div class="avatar">
+                                                    <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status label-success"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lukasz Holeczek</small>
+                                                <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                                            </div>
+                                            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                                        </div>
+                                        <hr>
+                                        <div class="message">
+                                            <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                                                <div class="avatar">
+                                                    <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status label-success"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lukasz Holeczek</small>
+                                                <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                                            </div>
+                                            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                                        </div>
+                                        <hr>
+                                        <div class="message">
+                                            <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                                                <div class="avatar">
+                                                    <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status label-success"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lukasz Holeczek</small>
+                                                <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                                            </div>
+                                            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                                        </div>
+                                        <hr>
+                                        <div class="message">
+                                            <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                                                <div class="avatar">
+                                                    <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status label-success"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lukasz Holeczek</small>
+                                                <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                                            </div>
+                                            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                                        </div>
+                                        <hr>
+                                        <div class="message">
+                                            <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                                                <div class="avatar">
+                                                    <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                                    <span class="avatar-status label-success"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lukasz Holeczek</small>
+                                                <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                                            </div>
+                                            <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane p-a-1" id="leaf-view" role="tabpanel">
+                                        <h6>Settings</h6>
+                                        <div class="aside-options">
+                                            <div class="clearfix m-t-2">
+                                                <small><b>Option 1</b></small>
+                                                <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                                    <input class="switch-input" checked="" type="checkbox">
+                                                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                                            </div>
+                                        </div>
+                                        <div class="aside-options">
+                                            <div class="clearfix m-t-1">
+                                                <small><b>Option 2</b></small>
+                                                <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                                    <input class="switch-input" type="checkbox">
+                                                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                                            </div>
+                                        </div>
+                                        <div class="aside-options">
+                                            <div class="clearfix m-t-1">
+                                                <small><b>Option 3</b></small>
+                                                <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                                    <input class="switch-input" type="checkbox">
+                                                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="aside-options">
+                                            <div class="clearfix m-t-1">
+                                                <small><b>Option 4</b></small>
+                                                <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                                    <input class="switch-input" checked="" type="checkbox">
+                                                    <span class="switch-label" data-on="On" data-off="Off"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <h6>System Utilization</h6>
+                                        <div class="text-uppercase m-b-q m-t-2">
+                                            <small><b>CPU Usage</b></small>
+                                        </div>
+                                        <progress class="progress progress-xs progress-info m-a-0" value="25" max="100">25%</progress>
+                                        <small class="text-muted">348 Processes. 1/4 Cores.</small>
+                                        <div class="text-uppercase m-b-q m-t-h">
+                                            <small><b>Memory Usage</b></small>
+                                        </div>
+                                        <progress class="progress progress-xs progress-warning m-a-0" value="70" max="100">70%</progress>
+                                        <small class="text-muted">11444GB/16384MB</small>
+                                        <div class="text-uppercase m-b-q m-t-h">
+                                            <small><b>SSD 1 Usage</b></small>
+                                        </div>
+                                        <progress class="progress progress-xs progress-danger m-a-0" value="95" max="100">95%</progress>
+                                        <small class="text-muted">243GB/256GB</small>
+                                        <div class="text-uppercase m-b-q m-t-h">
+                                            <small><b>SSD 2 Usage</b></small>
+                                        </div>
+                                        <progress class="progress progress-xs progress-success m-a-0" value="10" max="100">10%</progress>
+                                        <small class="text-muted">25GB/256GB</small>
+                                    </div>
+
+                                </div> <!-- card-block -->
+
+                            </div> <!-- information-pane -->
+
+                            <div id="fabric-pane" class="card card-default">
+                                <div class="card-header">
+
+                                    <ul class="nav" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active tooltip" data-toggle="tab" href="#topology-view" role="tab" style="margin-right: 10px">
+                                                    Topology
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link tooltip" data-toggle="tab" href="#heatmap-view" role="tab">
+                                                    Heap Map
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="card-actions">
+                                        <a class="btn-minimize" aria-expanded="true" aria-controls="collapseExample" href="#topology-pane" data-toggle="collapse"><i class="icon-arrow-down"></i></a>
+                                        <a class="btn-minimize" aria-expanded="true" aria-controls="collapseExample" href="#topology-pane" data-toggle="collapse"><i class="icon-size-fullscreen"></i></a>
+                                        <a class="btn-close" href="#"><i class="icon-close"></i></a>
+                                    </div>
+                                </div>
+                                <div id="topology-pane" class="card-block collapse in tab-content" aria-expanded="true">
+
+                                    <div id="topology-view" class="tab-pane active" role="tabpanel">
+
+                                        <div class="topology-toolbar">
+
+                                            <div class="row row-equal">
+                                                <div class="col-md-6">
+                                                    <button class="btn btn-sm btn-primary-outline hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-plus"></i> &nbsp; Add switch
+                                                    </button>
+
+                                                    <button class="btn btn-sm btn-primary-outline hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-plus"></i> &nbsp; Add link
+                                                    </button>
+
+                                                    <button class="btn btn-sm btn-primary-outline hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-share"></i> &nbsp; Toggle link
+                                                    </button>
+
+                                                    <button class="btn btn-sm btn-primary-outline hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-screen-desktop "></i> &nbsp; Toggle server
+                                                    </button>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <input id="appendedInputButtons" size="16" class="form-control btn-sm btn-primary-outline"
+                                                               type="text">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-sm btn-primary-outline hidden-sm-down" type="button"><i class="icon-magnifier"></i></button>
+                                                            <button class="btn btn-sm btn-primary-outline hidden-sm-down" type="button">Options</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-sm btn-primary-outline pull-right hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-magnifier-remove"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-sm btn-primary-outline pull-right hidden-sm-down"
+                                                            type="button" style="margin-right: 5px;">
+                                                        <i class="icon-magnifier-add"></i>
+                                                    </button>
+                                                </div>
+                                            </div> <!-- row -->
+
+                                        </div>
+
+                                        <div id="topology-svg" class="tab-pane active" role="tabpanel"></div>
+
+                                    </div> <!-- topology-view -->
+
+                                    <div id="heatmap-view" class="tab-pane" role="tabpanel">
+                                        <div class="topology-toolbar">
+
+                                            <div class="row row-equal">
+                                                <div class="col-md-6">
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <input size="16" class="form-control btn-sm btn-primary-outline"
+                                                               type="text">
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-sm btn-primary-outline hidden-sm-down" type="button"><i class="icon-magnifier"></i></button>
+                                                            <button class="btn btn-sm btn-primary-outline hidden-sm-down" type="button">Options</button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <button class="btn btn-sm btn-primary-outline pull-right hidden-sm-down"
+                                                            type="button">
+                                                        <i class="icon-magnifier-remove"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-sm btn-primary-outline pull-right hidden-sm-down"
+                                                            type="button" style="margin-right: 5px;">
+                                                        <i class="icon-magnifier-add"></i>
+                                                    </button>
+                                                </div>
+                                            </div> <!-- row -->
+
+                                        </div>
+
+                                        <div id="heatmap-svg"></div>
+                                    </div> <!-- heatmap-view -->
+
+
+                                </div>
+                            </div>
+
+
+                        </div> <!-- col -->
+                    </div> <!-- row -->
+
+                </div>
+            </div>
+            <!-- /.conainer-fluid -->
+        </main>
+        <aside class="aside-menu">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab"><i class="icon-list"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#messages" role="tab"><i class="icon-speech"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#settings" role="tab"><i class="icon-settings"></i></a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="timeline" role="tabpanel">
+                    <div class="callout r-0 m-a-0 p-y-h text-muted text-xs-center bg-faded text-uppercase">
+                        <small><b>Today</b></small>
+                    </div>
+                    <hr class="transparent m-x-1 m-y-0">
+                    <div class="callout r-0 callout-warning m-a-0 p-y-1">
+                        <div class="avatar pull-xs-right">
+                            <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                        </div>
+                        <div>Meeting with
+                            <strong>Lucas</strong>
+                        </div>
+                        <small class="text-muted m-r-1"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                        <small class="text-muted"><i class="icon-location-pin"></i>&nbsp; Palo Alto, CA </small>
+                    </div>
+                    <hr class="m-x-1 m-y-0">
+                    <div class="callout r-0 callout-info m-a-0 p-y-1">
+                        <div class="avatar pull-xs-right">
+                            <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                        </div>
+                        <div>Skype with
+                            <strong>Megan</strong>
+                        </div>
+                        <small class="text-muted m-r-1"><i class="icon-calendar"></i>&nbsp; 4 - 5pm</small>
+                        <small class="text-muted"><i class="icon-social-skype"></i>&nbsp; On-line </small>
+                    </div>
+                    <hr class="transparent m-x-1 m-y-0">
+                    <div class="callout r-0 m-a-0 p-y-h text-muted text-xs-center bg-faded text-uppercase">
+                        <small><b>Tomorrow</b></small>
+                    </div>
+                    <hr class="transparent m-x-1 m-y-0">
+                    <div class="callout r-0 callout-danger m-a-0 p-y-1">
+                        <div>New UI Project -
+                            <strong>deadline</strong>
+                        </div>
+                        <small class="text-muted m-r-1"><i class="icon-calendar"></i>&nbsp; 10 - 11pm</small>
+                        <small class="text-muted"><i class="icon-home"></i>&nbsp; creativeLabs HQ </small>
+                        <div class="avatars-stack m-t-h">
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-x-1 m-y-0">
+                    <div class="callout r-0 callout-success m-a-0 p-y-1">
+                        <div>
+                            <strong>#10 Startups.Garden</strong> Meetup</div>
+                        <small class="text-muted m-r-1"><i class="icon-calendar"></i>&nbsp; 1 - 3pm</small>
+                        <small class="text-muted"><i class="icon-location-pin"></i>&nbsp; Palo Alto, CA </small>
+                    </div>
+                    <hr class="m-x-1 m-y-0">
+                    <div class="callout r-0 callout-primary m-a-0 p-y-1">
+                        <div>
+                            <strong>Team meeting</strong>
+                        </div>
+                        <small class="text-muted m-r-1"><i class="icon-calendar"></i>&nbsp; 4 - 6pm</small>
+                        <small class="text-muted"><i class="icon-home"></i>&nbsp; creativeLabs HQ </small>
+                        <div class="avatars-stack m-t-h">
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                            <div class="avatar avatar-xs">
+                                <img src="assets/img/avatars/8.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="m-x-1 m-y-0">
+                </div>
+                <div class="tab-pane p-a-1" id="messages" role="tabpanel">
+                    <div class="message">
+                        <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                            <div class="avatar">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                <span class="avatar-status label-success"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lukasz Holeczek</small>
+                            <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                        </div>
+                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                    </div>
+                    <hr>
+                    <div class="message">
+                        <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                            <div class="avatar">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                <span class="avatar-status label-success"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lukasz Holeczek</small>
+                            <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                        </div>
+                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                    </div>
+                    <hr>
+                    <div class="message">
+                        <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                            <div class="avatar">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                <span class="avatar-status label-success"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lukasz Holeczek</small>
+                            <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                        </div>
+                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                    </div>
+                    <hr>
+                    <div class="message">
+                        <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                            <div class="avatar">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                <span class="avatar-status label-success"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lukasz Holeczek</small>
+                            <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                        </div>
+                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                    </div>
+                    <hr>
+                    <div class="message">
+                        <div class="p-y-1 p-b-3 m-r-1 pull-left">
+                            <div class="avatar">
+                                <img src="assets/img/avatars/7.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
+                                <span class="avatar-status label-success"></span>
+                            </div>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lukasz Holeczek</small>
+                            <small class="text-muted pull-right m-t-q">1:52 PM</small>
+                        </div>
+                        <div class="text-truncate font-weight-bold">Lorem ipsum dolor sit amet</div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt...</small>
+                    </div>
+                </div>
+                <div class="tab-pane p-a-1" id="settings" role="tabpanel">
+                    <h6>Settings</h6>
+                    <div class="aside-options">
+                        <div class="clearfix m-t-2">
+                            <small><b>Option 1</b></small>
+                            <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                <input type="checkbox" class="switch-input" checked>
+                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                        </div>
+                    </div>
+                    <div class="aside-options">
+                        <div class="clearfix m-t-1">
+                            <small><b>Option 2</b></small>
+                            <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                <input type="checkbox" class="switch-input">
+                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                        <div>
+                            <small class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+                        </div>
+                    </div>
+                    <div class="aside-options">
+                        <div class="clearfix m-t-1">
+                            <small><b>Option 3</b></small>
+                            <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                <input type="checkbox" class="switch-input">
+                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="aside-options">
+                        <div class="clearfix m-t-1">
+                            <small><b>Option 4</b></small>
+                            <label class="switch switch-text switch-pill switch-success switch-sm pull-right">
+                                <input type="checkbox" class="switch-input" checked>
+                                <span class="switch-label" data-on="On" data-off="Off"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>System Utilization</h6>
+                    <div class="text-uppercase m-b-q m-t-2">
+                        <small><b>CPU Usage</b></small>
+                    </div>
+                    <progress class="progress progress-xs progress-info m-a-0" value="25" max="100">25%</progress>
+                    <small class="text-muted">348 Processes. 1/4 Cores.</small>
+                    <div class="text-uppercase m-b-q m-t-h">
+                        <small><b>Memory Usage</b></small>
+                    </div>
+                    <progress class="progress progress-xs progress-warning m-a-0" value="70" max="100">70%</progress>
+                    <small class="text-muted">11444GB/16384MB</small>
+                    <div class="text-uppercase m-b-q m-t-h">
+                        <small><b>SSD 1 Usage</b></small>
+                    </div>
+                    <progress class="progress progress-xs progress-danger m-a-0" value="95" max="100">95%</progress>
+                    <small class="text-muted">243GB/256GB</small>
+                    <div class="text-uppercase m-b-q m-t-h">
+                        <small><b>SSD 2 Usage</b></small>
+                    </div>
+                    <progress class="progress progress-xs progress-success m-a-0" value="10" max="100">10%</progress>
+                    <small class="text-muted">25GB/256GB</small>
+                </div>
+            </div>
+        </aside>
+        <footer class="footer">
+            <span class="text-left">
+                <a href="https://genesisui.com/theme.html?id=alba">Alba</a> &copy; 2016 creativeLabs.
+            </span>
+            <span class="pull-right">
+                Powered by <a href="http://GenesisUI.com">GenesisUI</a>
+            </span>
+        </footer>
+        <!-- Bootstrap and necessary plugins -->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="assets/js/libs/jquery.min.js"></script>
+        <script src="assets/js/libs/tether.min.js"></script>
+        <script src="assets/js/libs/bootstrap.min.js"></script>
+        <script src="assets/js/libs/pace.min.js"></script>
+        <!-- Plugins and scripts required by all views -->
+        <script src="assets/js/libs/Chart.min.js"></script>
+        <script src="assets/js/views/shared.js"></script>
+        <!-- GenesisUI main scripts -->
+        <script src="assets/js/app.js"></script>
+
+
+        <script type="text/javascript">
+            (function () {
+                var width = 960,     // svg width
+                        height = 650,     // svg height
+                        dr = 4,      // default point radius
+                        off = 15,    // cluster hull offset
+                        expand = {}, // expanded clusters
+                        data, net, force, hullg, hull, linkg, link, nodeg, node;
+
+                var curve = d3.svg.line()
+                        .interpolate("cardinal-closed")
+                        .tension(.85);
+
+                var fill = d3.scale.category20();
+
+                function noop() { return false; }
+
+                function nodeid(n) {
+                    return n.size ? "_g_"+n.group : n.name;
+                }
+
+                function linkid(l) {
+                    var u = nodeid(l.source),
+                            v = nodeid(l.target);
+                    return u<v ? u+"|"+v : v+"|"+u;
+                }
+
+                function getGroup(n) { return n.group; }
+
+                // constructs the network to visualize
+                function network(data, prev, index, expand) {
+                    expand = expand || {};
+                    var gm = {},    // group map
+                            nm = {},    // node map
+                            lm = {},    // link map
+                            gn = {},    // previous group nodes
+                            gc = {},    // previous group centroids
+                            nodes = [], // output nodes
+                            links = []; // output links
+
+                    // process previous nodes for reuse or centroid calculation
+                    if (prev) {
+                        prev.nodes.forEach(function(n) {
+                            var i = index(n), o;
+                            if (n.size > 0) {
+                                gn[i] = n;
+                                n.size = 0;
+                            } else {
+                                o = gc[i] || (gc[i] = {x:0,y:0,count:0});
+                                o.x += n.x;
+                                o.y += n.y;
+                                o.count += 1;
+                            }
+                        });
+                    }
+
+                    // determine nodes
+                    for (var k=0; k<data.nodes.length; ++k) {
+                        var n = data.nodes[k],
+                                i = index(n),
+                                l = gm[i] || (gm[i]=gn[i]) || (gm[i]={group:i, size:0, nodes:[]});
+
+                        if (expand[i]) {
+                            // the node should be directly visible
+                            nm[n.name] = nodes.length;
+                            nodes.push(n);
+                            if (gn[i]) {
+                                // place new nodes at cluster location (plus jitter)
+                                n.x = gn[i].x + Math.random();
+                                n.y = gn[i].y + Math.random();
+                            }
+                        } else {
+                            // the node is part of a collapsed cluster
+                            if (l.size == 0) {
+                                // if new cluster, add to set and position at centroid of leaf nodes
+                                nm[i] = nodes.length;
+                                nodes.push(l);
+                                if (gc[i]) {
+                                    l.x = gc[i].x / gc[i].count;
+                                    l.y = gc[i].y / gc[i].count;
+                                }
+                            }
+                            l.nodes.push(n);
+                        }
+                        // always count group size as we also use it to tweak the force graph strengths/distances
+                        l.size += 1;
+                        n.group_data = l;
+                    }
+
+                    for (i in gm) { gm[i].link_count = 0; }
+
+                    // determine links
+                    for (k=0; k<data.links.length; ++k) {
+                        var e = data.links[k],
+                                u = index(e.source),
+                                v = index(e.target);
+                        if (u != v) {
+                            gm[u].link_count++;
+                            gm[v].link_count++;
+                        }
+                        u = expand[u] ? nm[e.source.name] : nm[u];
+                        v = expand[v] ? nm[e.target.name] : nm[v];
+                        var i = (u<v ? u+"|"+v : v+"|"+u),
+                                l = lm[i] || (lm[i] = {source:u, target:v, size:0});
+                        l.size += 1;
+                    }
+                    for (i in lm) { links.push(lm[i]); }
+
+                    return {nodes: nodes, links: links};
+                }
+
+                function convexHulls(nodes, index, offset) {
+                    var hulls = {};
+
+                    // create point sets
+                    for (var k=0; k<nodes.length; ++k) {
+                        var n = nodes[k];
+                        if (n.size) continue;
+                        var i = index(n),
+                                l = hulls[i] || (hulls[i] = []);
+                        l.push([n.x-offset, n.y-offset]);
+                        l.push([n.x-offset, n.y+offset]);
+                        l.push([n.x+offset, n.y-offset]);
+                        l.push([n.x+offset, n.y+offset]);
+                    }
+
+                    // create convex hulls
+                    var hullset = [];
+                    for (i in hulls) {
+                        hullset.push({group: i, path: d3.geom.hull(hulls[i])});
+                    }
+
+                    return hullset;
+                }
+
+                function drawCluster(d) {
+                    return curve(d.path); // 0.8
+                }
+
+                // --------------------------------------------------------
+
+                var body = d3.select("#topology-svg");
+
+                var vis = body.append("svg")
+                        .attr("width", width)
+                        .attr("height", height);
+                vis.attr('width', '100%');
+
+                d3.json("miserables.json", function(json) {
+                    data = json;
+                    for (var i=0; i<data.links.length; ++i) {
+                        o = data.links[i];
+                        o.source = data.nodes[o.source];
+                        o.target = data.nodes[o.target];
+                    }
+
+                    hullg = vis.append("g");
+                    linkg = vis.append("g");
+                    nodeg = vis.append("g");
+
+                    init();
+
+                    vis.attr("opacity", 1e-6)
+                            .transition()
+                            .duration(1000)
+                            .attr("opacity", 1);
+                });
+
+                function init() {
+                    if (force) force.stop();
+
+                    net = network(data, net, getGroup, expand);
+
+                    force = d3.layout.force()
+                            .nodes(net.nodes)
+                            .links(net.links)
+                            .size([width, height])
+                            .linkDistance(function(l, i) {
+                                var n1 = l.source, n2 = l.target;
+                                // larger distance for bigger groups:
+                                // both between single nodes and _other_ groups (where size of own node group still counts),
+                                // and between two group nodes.
+                                //
+                                // reduce distance for groups with very few outer links,
+                                // again both in expanded and grouped form, i.e. between individual nodes of a group and
+                                // nodes of another group or other group node or between two group nodes.
+                                //
+                                // The latter was done to keep the single-link groups ('blue', rose, ...) close.
+                                return 30 +
+                                        Math.min(20 * Math.min((n1.size || (n1.group != n2.group ? n1.group_data.size : 0)),
+                                                        (n2.size || (n1.group != n2.group ? n2.group_data.size : 0))),
+                                                -30 +
+                                                30 * Math.min((n1.link_count || (n1.group != n2.group ? n1.group_data.link_count : 0)),
+                                                        (n2.link_count || (n1.group != n2.group ? n2.group_data.link_count : 0))),
+                                                100);
+                                //return 150;
+                            })
+                            .linkStrength(function(l, i) {
+                                return 1;
+                            })
+                            .gravity(0.05)   // gravity+charge tweaked to ensure good 'grouped' view (e.g. green group not smack between blue&orange, ...
+                            .charge(-600)    // ... charge is important to turn single-linked groups to the outside
+                            .friction(0.5)   // friction adjusted to get dampened display: less bouncy bouncy ball [Swedish Chef, anyone?]
+                            .start();
+
+                    hullg.selectAll("path.hull").remove();
+                    hull = hullg.selectAll("path.hull")
+                            .data(convexHulls(net.nodes, getGroup, off))
+                            .enter().append("path")
+                            .attr("class", "hull")
+                            .attr("d", drawCluster)
+                            .style("fill", function(d) { return fill(d.group); })
+                            .on("click", function(d) {
+                                console.log("hull click", d, arguments, this, expand[d.group]);
+                                expand[d.group] = false; init();
+                            });
+
+                    link = linkg.selectAll("line.link").data(net.links, linkid);
+                    link.exit().remove();
+                    link.enter().append("line")
+                            .attr("class", "link")
+                            .attr("x1", function(d) { return d.source.x; })
+                            .attr("y1", function(d) { return d.source.y; })
+                            .attr("x2", function(d) { return d.target.x; })
+                            .attr("y2", function(d) { return d.target.y; })
+                            .style("stroke-width", function(d) { return d.size || 1; });
+
+                    node = nodeg.selectAll("circle.node").data(net.nodes, nodeid);
+                    node.exit().remove();
+                    node.enter().append("circle")
+                    // if (d.size) -- d.size > 0 when d is a group node.
+                            .attr("class", function(d) { return "node" + (d.size?"":" leaf"); })
+                            .attr("r", function(d) { return d.size ? d.size + dr : dr+1; })
+                            .attr("cx", function(d) { return d.x; })
+                            .attr("cy", function(d) { return d.y; })
+                            .style("fill", function(d) { return fill(d.group); })
+                            .on("click", function(d) {
+                                console.log("node click", d, arguments, this, expand[d.group]);
+                                expand[d.group] = !expand[d.group];
+                                init();
+                            });
+
+                    node.call(force.drag);
+
+                    force.on("tick", function() {
+                        if (!hull.empty()) {
+                            hull.data(convexHulls(net.nodes, getGroup, off))
+                                    .attr("d", drawCluster);
+                        }
+
+                        link.attr("x1", function(d) { return d.source.x; })
+                                .attr("y1", function(d) { return d.source.y; })
+                                .attr("x2", function(d) { return d.target.x; })
+                                .attr("y2", function(d) { return d.target.y; });
+
+                        node.attr("cx", function(d) { return d.x; })
+                                .attr("cy", function(d) { return d.y; });
+                    });
+                }
+            })();
+        </script>
+
+        <script>
+            // https://bl.ocks.org/Bl3f/cdb5ad854b376765fa99
+
+            (function () {
+                var itemSize = 22,
+                        cellSize = itemSize - 1,
+                        margin = {top: 120, right: 20, bottom: 20, left: 110};
+
+                var width = 750 - margin.right - margin.left,
+                        height = 300 - margin.top - margin.bottom;
+
+                width = 960;
+                height = 510;
+
+                var formatDate = d3.time.format("%Y-%m-%d");
+
+                d3.csv('data.csv', function ( response ) {
+
+                    var data = response.map(function( item ) {
+                        var newItem = {};
+                        newItem.country = item.x;
+                        newItem.product = item.y;
+                        newItem.value = item.value;
+
+                        return newItem;
+                    })
+
+                    var x_elements = d3.set(data.map(function( item ) { return item.product; } )).values(),
+                            y_elements = d3.set(data.map(function( item ) { return item.country; } )).values();
+
+                    var xScale = d3.scale.ordinal()
+                            .domain(x_elements)
+                            .rangeBands([0, x_elements.length * itemSize]);
+
+                    var xAxis = d3.svg.axis()
+                            .scale(xScale)
+                            .tickFormat(function (d) {
+                                return d;
+                            })
+                            .orient("top");
+
+                    var yScale = d3.scale.ordinal()
+                            .domain(y_elements)
+                            .rangeBands([0, y_elements.length * itemSize]);
+
+                    var yAxis = d3.svg.axis()
+                            .scale(yScale)
+                            .tickFormat(function (d) {
+                                return d;
+                            })
+                            .orient("left");
+
+                    var colorScale = d3.scale.threshold()
+                            .domain([0.85, 1])
+                            .range(["#2980B9", "#E67E22", "#27AE60", "#27AE60"]);
+
+                    var svg = d3.select('#heatmap-svg')
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                    var cells = svg.selectAll('rect')
+                            .data(data)
+                            .enter().append('g').append('rect')
+                            .attr('class', 'cell')
+                            .attr('width', cellSize)
+                            .attr('height', cellSize)
+                            .attr('y', function(d) { return yScale(d.country); })
+                            .attr('x', function(d) { return xScale(d.product); })
+                            .attr('fill', function(d) { return colorScale(d.value); });
+
+                    svg.append("g")
+                            .attr("class", "y axis")
+                            .call(yAxis)
+                            .selectAll('text')
+                            .attr('font-weight', 'normal');
+
+                    svg.append("g")
+                            .attr("class", "x axis")
+                            .call(xAxis)
+                            .selectAll('text')
+                            .attr('font-weight', 'normal')
+                            .style("text-anchor", "start")
+                            .attr("dx", ".8em")
+                            .attr("dy", ".5em")
+                            .attr("transform", function (d) {
+                                return "rotate(-65)";
+                            });
+                });
+            })();
+        </script>
+
+    </body>
+</html>

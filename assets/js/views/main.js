@@ -107,11 +107,11 @@ $(function(){
         },
     };
     var ctx = $('#main-chart');
-    var mainChart = new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    });
+    // var mainChart = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data,
+    //     options: options
+    // });
 
 
     //Social Box Charts
@@ -152,11 +152,11 @@ $(function(){
         }]
     };
     var ctx = $('#social-box-chart-1');
-    var socialBoxChart1 = new Chart(ctx, {
-        type: 'line',
-        data: data1,
-        options: options
-    });
+    // var socialBoxChart1 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data1,
+    //     options: options
+    // });
 
     var data2 = {
         labels: labels,
@@ -170,12 +170,12 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-2').get(0).getContext('2d');
-    var socialBoxChart2 = new Chart(ctx, {
-        type: 'line',
-        data: data2,
-        options: options
-    });
+    // var ctx = $('#social-box-chart-2').get(0).getContext('2d');
+    // var socialBoxChart2 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data2,
+    //     options: options
+    // });
 
     var data3 = {
         labels: labels,
@@ -189,12 +189,12 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-3').get(0).getContext('2d');
-    var socialBoxChart3 = new Chart(ctx, {
-        type: 'line',
-        data: data3,
-        options: options
-    });
+    // var ctx = $('#social-box-chart-3').get(0).getContext('2d');
+    // var socialBoxChart3 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data3,
+    //     options: options
+    // });
 
     var data4 = {
         labels: labels,
@@ -208,12 +208,12 @@ $(function(){
             }
         ]
     };
-    var ctx = $('#social-box-chart-4').get(0).getContext('2d');
-    var socialBoxChart4 = new Chart(ctx, {
-        type: 'line',
-        data: data4,
-        options: options
-    });
+    // var ctx = $('#social-box-chart-4').get(0).getContext('2d');
+    // var socialBoxChart4 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data4,
+    //     options: options
+    // });
 
 
 
@@ -254,13 +254,13 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-1');
-    var sparklineChart1 = new Chart(ctx, {
-        type: 'line',
-        data: data1,
-        options: options
-    });
+    // var sparklineChart1 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data1,
+    //     options: options
+    // });
 
-    // ///////
+    //////////
     var ctx = $('#controller1-chart-1');
     var sparklineChart_a = new Chart(ctx, {
         type: 'line',
@@ -323,7 +323,7 @@ $(function(){
         data: data1,
         options: options
     });
-    // //////
+    /////////
 
     var data2 = {
         labels: labels,
@@ -337,11 +337,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-2');
-    var sparklineChart2 = new Chart(ctx, {
-        type: 'line',
-        data: data2,
-        options: options
-    });
+    // var sparklineChart2 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data2,
+    //     options: options
+    // });
 
     var data3 = {
         labels: labels,
@@ -355,11 +355,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-3');
-    var sparklineChart3 = new Chart(ctx, {
-        type: 'line',
-        data: data3,
-        options: options
-    });
+    // var sparklineChart3 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data3,
+    //     options: options
+    // });
 
     var data4 = {
         labels: labels,
@@ -373,11 +373,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-4');
-    var sparklineChart4 = new Chart(ctx, {
-        type: 'line',
-        data: data4,
-        options: options
-    });
+    // var sparklineChart4 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data4,
+    //     options: options
+    // });
 
     var data5 = {
         labels: labels,
@@ -391,11 +391,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-5');
-    var sparklineChart5 = new Chart(ctx, {
-        type: 'line',
-        data: data5,
-        options: options
-    });
+    // var sparklineChart5 = new Chart(ctx, {
+    //     type: 'line',
+    //     data: data5,
+    //     options: options
+    // });
 
     var data6 = {
         labels: labels,
@@ -409,11 +409,11 @@ $(function(){
         ]
     };
     var ctx = $('#sparkline-chart-6');
-    var sparklineChart6= new Chart(ctx, {
-        type: 'line',
-        data: data6,
-        options: options
-    });
+    // var sparklineChart6= new Chart(ctx, {
+    //     type: 'line',
+    //     data: data6,
+    //     options: options
+    // });
 
 
     //Gauge JS
@@ -433,39 +433,39 @@ $(function(){
         generateGradient: true
     };
     var target1 = document.getElementById('gauge-1'); // your canvas element
-    var gauge1 = new Donut(target1).setOptions(options); // create sexy gauge!
-        gauge1.maxValue = 100; // set max gauge value
-        gauge1.animationSpeed = 32; // set animation speed (32 is default value)
-        gauge1.set(48); // set actual value
+    // var gauge1 = new Donut(target1).setOptions(options); // create sexy gauge!
+    //     gauge1.maxValue = 100; // set max gauge value
+    //     gauge1.animationSpeed = 32; // set animation speed (32 is default value)
+    //     gauge1.set(48); // set actual value
 
     var target2 = document.getElementById('gauge-2');
-    var gauge2 = new Donut(target2).setOptions(options);
-        gauge2.maxValue = 100;
-        gauge2.animationSpeed = 32;
-        gauge2.set(61);
+    // var gauge2 = new Donut(target2).setOptions(options);
+    //     gauge2.maxValue = 100;
+    //     gauge2.animationSpeed = 32;
+    //     gauge2.set(61);
 
     var target3 = document.getElementById('gauge-3');
-    var gauge3 = new Donut(target3).setOptions(options);
-        gauge3.maxValue = 100;
-        gauge3.animationSpeed = 32;
-        gauge3.set(33);
+    // var gauge3 = new Donut(target3).setOptions(options);
+    //     gauge3.maxValue = 100;
+    //     gauge3.animationSpeed = 32;
+    //     gauge3.set(33);
 
     var target4 = document.getElementById('gauge-4');
-    var gauge4 = new Donut(target4).setOptions(options);
-        gauge4.maxValue = 100;
-        gauge4.animationSpeed = 32;
-        gauge4.set(23);
+    // var gauge4 = new Donut(target4).setOptions(options);
+    //     gauge4.maxValue = 100;
+    //     gauge4.animationSpeed = 32;
+    //     gauge4.set(23);
 
     var target5 = document.getElementById('gauge-5');
-    var gauge5 = new Donut(target5).setOptions(options);
-        gauge5.maxValue = 100;
-        gauge5.animationSpeed = 32;
-        gauge5.set(78);
+    // var gauge5 = new Donut(target5).setOptions(options);
+    //     gauge5.maxValue = 100;
+    //     gauge5.animationSpeed = 32;
+    //     gauge5.set(78);
 
     var target6 = document.getElementById('gauge-6');
-    var gauge6 = new Donut(target6).setOptions(options);
-        gauge6.maxValue = 100;
-        gauge6.animationSpeed = 32;
-        gauge6.set(11);
+    // var gauge6 = new Donut(target6).setOptions(options);
+    //     gauge6.maxValue = 100;
+    //     gauge6.animationSpeed = 32;
+    //     gauge6.set(11);
 
 });
